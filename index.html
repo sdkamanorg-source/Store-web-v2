@@ -5,27 +5,28 @@
 <title>DeadlyMc Store</title>
 
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
-<!-- WELCOME PAGE -->
-<section class="welcome">
-  <h1>Welcome to DeadlyMc</h1>
-  <p>Best Minecraft SMP Server</p>
-  <button onclick="scrollToStore()">ENTER STORE</button>
+<!-- 🔥 WELCOME PAGE -->
+<section class="welcome" id="home">
+  <h1>Welcome To DeadlyMc Store</h1>
+  <button onclick="scrollToStore()">VIEW STORE</button>
 </section>
 
-<header>DeadlyMc SMP Store</header>
+<!-- 🔥 STORE -->
+<section id="storeSection">
+  <h2 class="title">STORE</h2>
+  <div class="container" id="store"></div>
+</section>
 
-<div class="container" id="store"></div>
-
-<!-- POPUP -->
+<!-- 🔥 MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
     <h3 id="itemName"></h3>
-    <p>Go to Discord → Support → Make Ticket → Talk with staff.</p>
+    <p>Go to Discord → Support → Make Ticket</p>
 
     <a href="https://discord.gg/JMPbC9KAd3" target="_blank" class="buy-discord">
       BUY ON DISCORD
@@ -35,10 +36,8 @@
   </div>
 </div>
 
-<div class="info">
-  Server IP: deadlymc.boysonly.fun<br>
-  Port: 25565
-</div>
+<!-- 🔊 CLICK SOUND -->
+<audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
 
 <script src="script.js"></script>
 </body>
