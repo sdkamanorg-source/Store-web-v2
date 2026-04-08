@@ -20,7 +20,7 @@ items.forEach(item => {
   card.innerHTML = `
     <h3>${item.name}</h3>
     <p>${item.price}</p>
-    <button onclick="openModal('${item.name}')">Buy</button>
+    <button class="buy-btn" onclick="openModal('${item.name}')">BUY ON DISCORD</button>
   `;
 
   container.appendChild(card);
@@ -33,4 +33,8 @@ function openModal(name) {
 
 function closeModal() {
   document.getElementById("modal").style.display = "none";
+}
+
+function scrollToStore(){
+  document.querySelector('.container').scrollIntoView({behavior:'smooth'});
 }
