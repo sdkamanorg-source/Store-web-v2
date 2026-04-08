@@ -1,10 +1,11 @@
-/* ===== GLOBAL RESET ===== */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===== BODY ===== */
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #0a192f, #1e3c72, #2a5298);
@@ -29,12 +30,12 @@ canvas {
   height: 100%;
   background: url("https://i.ibb.co/7QpKsCX/clouds.png") repeat-x;
   background-size: cover;
-  opacity: 0.25;
-  animation: cloudsMove 120s linear infinite;
+  opacity: 0.2;
+  animation: cloudMove 120s linear infinite;
   z-index: -2;
 }
 
-@keyframes cloudsMove {
+@keyframes cloudMove {
   0% { transform: translateX(0); }
   100% { transform: translateX(-66%); }
 }
@@ -44,14 +45,13 @@ canvas {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 14px 20px;
+  padding: 12px 20px;
   background: rgba(10, 25, 47, 0.6);
   backdrop-filter: blur(12px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 999;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .top-bar span {
@@ -71,32 +71,31 @@ canvas {
 
 .top-bar button:hover {
   box-shadow: 0 0 15px #00c6ff;
-  transform: scale(1.05);
 }
 
-/* ===== WELCOME SECTION ===== */
+/* ===== WELCOME ===== */
 .welcome {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  animation: fadeIn 1.5s ease;
+  animation: fadeIn 1.2s ease;
 }
 
 .welcome h1 {
-  font-size: 42px;
+  font-size: 38px;
   background: linear-gradient(90deg, #00c6ff, #00f2fe);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .welcome button {
-  margin-top: 25px;
-  padding: 15px 40px;
+  margin-top: 20px;
+  padding: 14px 35px;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   background: linear-gradient(45deg, #00c6ff, #0072ff);
   color: white;
   cursor: pointer;
@@ -105,43 +104,49 @@ canvas {
 
 .welcome button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 25px #00c6ff;
+  box-shadow: 0 0 20px #00c6ff;
 }
 
-/* ===== STORE ===== */
+/* ===== STORE TITLE ===== */
 .title {
   text-align: center;
-  margin: 100px 0 20px;
+  margin-top: 80px;
   font-size: 28px;
 }
 
-/* GRID */
+.section-title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20px;
+  color: #00c6ff;
+}
+
+/* ===== GRID ===== */
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  padding: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 20px;
+  gap: 20px;
 }
 
 /* ===== CARD ===== */
 .card {
   backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.07);
-  border-radius: 20px;
-  padding: 25px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 22px;
   text-align: center;
   position: relative;
-  transition: all 0.35s ease;
+  transition: all 0.3s ease;
   transform-style: preserve-3d;
-  cursor: pointer;
 }
 
-/* ===== NEON BORDER ===== */
+/* GLOW BORDER */
 .card::before {
   content: "";
   position: absolute;
   inset: -2px;
-  border-radius: 20px;
+  border-radius: 18px;
   background: linear-gradient(
     270deg,
     #00c6ff,
@@ -153,7 +158,7 @@ canvas {
   background-size: 600% 600%;
   animation: glowMove 8s linear infinite;
   z-index: -1;
-  filter: blur(12px);
+  filter: blur(10px);
 }
 
 @keyframes glowMove {
@@ -161,16 +166,16 @@ canvas {
   100% { background-position: 600% }
 }
 
-/* ===== CARD HOVER ===== */
+/* HOVER */
 .card:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 20px 40px rgba(0, 198, 255, 0.3);
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 15px 30px rgba(0, 198, 255, 0.25);
 }
 
 /* TEXT */
 .card h3 {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .card p {
@@ -192,8 +197,8 @@ canvas {
 }
 
 .buy-btn:hover {
-  box-shadow: 0 0 20px #00c6ff;
   transform: scale(1.05);
+  box-shadow: 0 0 20px #00c6ff;
 }
 
 /* ===== MODAL ===== */
@@ -207,14 +212,13 @@ canvas {
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.5s ease;
 }
 
 .modal-content {
   backdrop-filter: blur(20px);
   background: rgba(0, 50, 100, 0.5);
-  padding: 30px;
-  border-radius: 18px;
+  padding: 25px;
+  border-radius: 15px;
   text-align: center;
   width: 90%;
   max-width: 350px;
@@ -229,7 +233,6 @@ canvas {
   background: linear-gradient(45deg, #5865F2, #404eed);
   color: white;
   text-decoration: none;
-  transition: 0.3s;
 }
 
 .buy-discord:hover {
@@ -238,30 +241,26 @@ canvas {
 
 /* CLOSE */
 .close-btn {
-  margin-top: 12px;
-  padding: 14px;
+  margin-top: 10px;
+  padding: 12px;
   width: 100%;
   background: #555;
-  border-radius: 10px;
+  border-radius: 8px;
   border: none;
   color: white;
-  cursor: pointer;
 }
 
-.close-btn:hover {
-  background: #777;
-}
-
-/* ===== ANIMATIONS ===== */
+/* ===== ANIMATION ===== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px);}
-  to { opacity: 1; transform: translateY(0);}
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:600px){
+
   .welcome h1 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .top-bar {
@@ -272,4 +271,5 @@ canvas {
   .container {
     padding: 15px;
   }
+
 }
