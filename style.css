@@ -1,13 +1,13 @@
-/* BACKGROUND */
+/* ===== GLOBAL ===== */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #000000, #0f0f0f);
+  background: linear-gradient(135deg, #0a192f, #1e3c72, #2a5298);
   color: white;
   overflow-x: hidden;
 }
 
-/* PARTICLES CANVAS */
+/* PARTICLES */
 canvas {
   position: fixed;
   top: 0;
@@ -15,84 +15,121 @@ canvas {
   z-index: -1;
 }
 
-/* 🔥 WELCOME */
+/* ===== TOP BAR ===== */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 12px 20px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.top-bar span {
+  font-size: 14px;
+}
+
+.top-bar button {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.top-bar button:hover {
+  box-shadow: 0 0 10px #00c6ff;
+}
+
+/* ===== WELCOME ===== */
 .welcome {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
+  flex-direction: column;
+  text-align: center;
 }
 
 .welcome h1 {
-  font-size: 35px;
-  background: linear-gradient(90deg, red, orange);
+  font-size: 36px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
   -webkit-background-clip: text;
   color: transparent;
 }
 
-/* BUTTON */
 .welcome button {
-  padding: 15px 35px;
+  margin-top: 20px;
+  padding: 14px 30px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(45deg, red, orange);
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
   color: white;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .welcome button:hover {
-  box-shadow: 0 0 25px red;
+  box-shadow: 0 0 20px #00c6ff;
 }
 
-/* STORE */
+/* ===== STORE ===== */
 .title {
   text-align: center;
-  margin: 40px 0;
+  margin-top: 80px;
 }
 
 /* GRID */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
   padding: 20px;
+  gap: 20px;
 }
 
-/* 🔥 GLASS CARD */
+/* ===== CARD ===== */
 .card {
   backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 25px;
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 18px;
   text-align: center;
   position: relative;
   transition: 0.3s;
   transform-style: preserve-3d;
 }
 
-/* ✨ ANIMATED GRADIENT BORDER */
+/* GLOW BORDER */
 .card::before {
   content: "";
   position: absolute;
   inset: -2px;
-  border-radius: 20px;
-  background: linear-gradient(270deg, red, orange, red);
-  background-size: 400% 400%;
-  animation: borderMove 6s linear infinite;
+  border-radius: 18px;
+  background: linear-gradient(
+    270deg,
+    #00c6ff,
+    #0072ff,
+    #00f2fe,
+    #4facfe,
+    #00c6ff
+  );
+  background-size: 600% 600%;
+  animation: glowMove 6s linear infinite;
   z-index: -1;
   filter: blur(10px);
 }
 
-@keyframes borderMove {
+@keyframes glowMove {
   0% {background-position: 0%}
-  100% {background-position: 400%}
+  100% {background-position: 600%}
 }
 
-/* HOVER 3D */
+/* HOVER */
 .card:hover {
   transform: translateY(-10px) scale(1.03);
 }
@@ -103,7 +140,7 @@ canvas {
 }
 
 .card p {
-  color: #ccc;
+  color: #cce7ff;
 }
 
 /* BUTTON */
@@ -113,17 +150,16 @@ canvas {
   width: 100%;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(45deg, red, orange);
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
   color: white;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .buy-btn:hover {
-  box-shadow: 0 0 20px red;
+  box-shadow: 0 0 15px #00c6ff;
 }
 
-/* MODAL */
+/* ===== MODAL ===== */
 .modal {
   position: fixed;
   top: 0;
@@ -138,20 +174,20 @@ canvas {
 
 .modal-content {
   backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.05);
+  background: rgba(0, 50, 100, 0.4);
   padding: 25px;
   border-radius: 15px;
   text-align: center;
   width: 90%;
 }
 
-/* DISCORD BTN */
+/* DISCORD BUTTON */
 .buy-discord {
   display: block;
   padding: 15px;
   margin-top: 15px;
   border-radius: 10px;
-  background: linear-gradient(45deg, red, orange);
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
   color: white;
   text-decoration: none;
 }
@@ -163,4 +199,16 @@ canvas {
   width: 100%;
   background: gray;
   border-radius: 8px;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  .welcome h1 {
+    font-size: 24px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
