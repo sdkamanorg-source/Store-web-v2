@@ -1,4 +1,4 @@
-// ITEMS
+// ================== ITEMS ==================
 const items = [
   {name: "Spawner Key x4", price: "₹39"},
   {name: "Fire Key x4", price: "₹69"},
@@ -14,7 +14,7 @@ const items = [
 
 const container = document.getElementById("store");
 
-// CREATE CARDS
+// ================== CREATE CARDS ==================
 items.forEach(item => {
   const card = document.createElement("div");
   card.className = "card";
@@ -22,13 +22,17 @@ items.forEach(item => {
   card.innerHTML = `
     <h3>${item.name}</h3>
     <p>${item.price}</p>
-    <button class="buy-btn" onclick="openModal('${item.name}')">Buy On Discord</button>
+    <button class="buy-btn">Buy On Discord</button>
   `;
+
+  card.querySelector(".buy-btn").addEventListener("click", () => {
+    openModal(item.name);
+  });
 
   container.appendChild(card);
 });
 
-// MODAL
+// ================== MODAL ==================
 function openModal(name){
   document.getElementById("modal").style.display = "flex";
   document.getElementById("itemName").innerText = name;
@@ -38,22 +42,37 @@ function closeModal(){
   document.getElementById("modal").style.display = "none";
 }
 
-// SCROLL
+// ================== SCROLL ==================
 function scrollToStore(){
-  document.getElementById("storeSection").scrollIntoView({behavior:'smooth'});
+  document.getElementById("storeSection").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
-// 🔥 PARTICLES
-const canvas = document.createElement("canvas");
-document.body.appendChild(canvas);
+// ================== COPY SERVER IP ==================
+function copyIP(){
+  const ip = "deadlymc.boysonly.fun";
+  navigator.clipboard.writeText(ip);
 
+  const btn = document.getElementById("copyBtn");
+  btn.innerText = "Copied!";
+  setTimeout(()=> btn.innerText = "Copy IP", 1500);
+}
+
+// ================== PARTICLES FIX ==================
+const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
 let particles = [];
 
-for(let i=0;i<80;i++){
+for(let i=0;i<100;i++){
   particles.push({
     x: Math.random()*canvas.width,
     y: Math.random()*canvas.height,
@@ -69,7 +88,7 @@ function animate(){
   particles.forEach(p=>{
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle = \"orange\";
+    ctx.fillStyle = "#00c6ff";
     ctx.fill();
 
     p.x += p.dx;
@@ -81,5 +100,25 @@ function animate(){
 
   requestAnimationFrame(animate);
 }
-
 animate();
+
+// ================== 3D TILT ==================
+document.addEventListener("mousemove", (e) => {
+  document.querySelectorAll(".card").forEach(card => {
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = -(y - rect.height/2) / 15;
+    const rotateY = (x - rect.width/2) / 15;
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+});
+
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateX(0) rotateY(0)";
+  });
+});
