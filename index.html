@@ -6,11 +6,23 @@
 
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
 </head>
+
 <body>
 
-<!-- 🔥 WELCOME PAGE -->
+<!-- 🌌 PARTICLES -->
+<canvas id="particles"></canvas>
+
+<!-- ☁️ CLOUDS -->
+<div class="clouds"></div>
+
+<!-- 🔝 TOP BAR -->
+<div class="top-bar">
+  <span>Server IP: deadlymc.boysonly.fun</span>
+  <button onclick="copyIP()" id="copyBtn">Copy IP</button>
+</div>
+
+<!-- 🔥 WELCOME -->
 <section class="welcome" id="home">
   <h1>Welcome To DeadlyMc Store</h1>
   <button onclick="scrollToStore()">VIEW STORE</button>
@@ -35,9 +47,6 @@
     <button class="close-btn" onclick="closeModal()">Close</button>
   </div>
 </div>
-
-<!-- 🔊 CLICK SOUND -->
-<audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
 
 <script src="script.js"></script>
 </body>
